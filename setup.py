@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 import pathlib
 
 here = pathlib.Path(__file__).parent.resolve()
@@ -27,14 +27,14 @@ setup(
         "Programming Language :: Python :: 3 :: Only",
     ],
     keywords="dataframe, machine learning, data analysis",
-    packages=find_packages(where="mycat"),
+    packages=["mycat"],
     python_requires=">=3.7, <4",
     install_requires=["ulist==0.9.0"],
     extras_require={
         "publish": ["twine==4.0.0"],
-        "CI": ["pytest"],
+        "CI": ["pytest==6.2.5"],
     },
     project_urls={
-        "Source": "https://github.com/pypa/sampleproject/",
+        "Source": "https://github.com/tushushu/mycat",
     },
 )
