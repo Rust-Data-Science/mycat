@@ -25,5 +25,9 @@ DATAFRAMES = {
     ],
 )
 def test(method: str, df: str, expected: Any) -> None:
-    result = getattr(DATAFRAMES[df], method)()
+    obj = getattr(DATAFRAMES[df], method)
+    if callable(obj):
+        result = obj()
+    else:
+        result = obj
     assert result == expected

@@ -1,1 +1,1 @@
-from .frame import DataFrame
+from .frame import DataFrame  # noqa:F401

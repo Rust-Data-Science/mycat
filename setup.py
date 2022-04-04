@@ -32,8 +32,13 @@ setup(
     install_requires=["ulist==0.9.0"],
     extras_require={
         "publish": ["twine==4.0.0"],
-        "CI": ["pytest==6.2.5"],
+        "CI": [
+            "pytest==6.2.5",
+            "mypy==0.930",
+            "flake8==4.0.1",
+        ],
     },
+    package_data={"mycat": ["py.typed"]},
     project_urls={
         "Source": "https://github.com/tushushu/mycat",
     },
