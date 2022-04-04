@@ -32,7 +32,7 @@ jobs:
           python setup.py bdist_wheel
       - name: Install mycat
         run: |
-          pip install mycat[CI] --no-index --find-links dist
+          pip install mycat[CI] --find-links dist
       - name: Python UnitTest
         run: |
           cd tests
