@@ -3,11 +3,12 @@ import pathlib
 
 here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / "README.md").read_text(encoding="utf-8")
+version = "0.1.0"
 
 
 setup(
     name="mycat",
-    version="0.1.0",
+    version=version,
     description="Fast and elegant DataFrame library in Python",
     long_description=long_description,
     long_description_content_type="text/markdown",

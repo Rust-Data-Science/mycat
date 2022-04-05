@@ -1,3 +1,7 @@
+"""
+Unit tests for the DataFrame information methods.
+"""
+
 import mycat as mc
 import ulist as ul
 import pytest
