@@ -24,7 +24,7 @@ class DataFrame:
         """Whether self is empty."""
         if self.n_cols == 0 or self.n_rows == 0:
             return True
-        return False 
+        return False
 
     @property
     def shape(self) -> Tuple[int, int]:

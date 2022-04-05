@@ -3,11 +3,12 @@ import pathlib
 
 here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / "README.md").read_text(encoding="utf-8")
+version = "0.1.0"
 
 
 setup(
     name="mycat",
-    version="0.1.0",
+    version=version,
     description="Fast and elegant DataFrame library in Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -32,8 +33,13 @@ setup(
     install_requires=["ulist==0.9.0"],
     extras_require={
         "publish": ["twine==4.0.0"],
-        "CI": ["pytest==6.2.5"],
+        "CI": [
+            "pytest==6.2.5",
+            "mypy==0.930",
+            "flake8==4.0.1",
+        ],
     },
+    package_data={"mycat": ["py.typed"]},
     project_urls={
         "Source": "https://github.com/tushushu/mycat",
     },
