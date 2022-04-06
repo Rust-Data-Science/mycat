@@ -1,7 +1,7 @@
 from typing import Dict, Tuple, List
 
 from ulist import UltraFastList
-import errors as E
+from . import errors as E
 
 
 class DataFrame:

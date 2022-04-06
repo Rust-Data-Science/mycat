@@ -31,6 +31,10 @@ DATAFRAMES = {
         ('columns', 'df2', []),
         ('columns', 'df3', ['foo', 'bar']),
 
+        ('dtypes', 'df1', {'foo': 'int64', 'bar': 'bool'}),
+        ('dtypes', 'df2', dict()),
+        ('dtypes', 'df3', {'foo': 'int64', 'bar': 'bool'}),
+
         ('empty', 'df1', False),
         ('empty', 'df2', True),
         ('empty', 'df3', True),
