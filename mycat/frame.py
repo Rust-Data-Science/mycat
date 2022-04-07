@@ -1,3 +1,4 @@
+from logging import exception
 from typing import Dict, Tuple, List
 
 from ulist import UltraFastList
@@ -15,8 +16,19 @@ class DataFrame:
     def __init__(self, data: Dict[str, UltraFastList]) -> None:
         self._data = data
 
+    def __contains__(self, col: str) -> bool:
+        """Whether self contains col.
+
+        Args:
+            col (str): Column name.
+
+        Returns:
+            bool
+        """
+        return col in self._data
+
     def __getitem__(self, col: str) -> UltraFastList:
-        """Returns the corresponding `ulist` object based on the
+        """Return the corresponding `ulist` object based on the
         given column name.
 
         Args:
@@ -32,6 +44,15 @@ class DataFrame:
         if result is None:
             raise E.ColumnNotFoundError(col)
         return result
+
+    def __setitem__(self, col: str, val: UltraFastList) -> None:
+        """Add new column or modify existing column.
+
+        Args:
+            col (str): Column name.
+            val (UltraFastList): Column value.
+        """
+        self._data[col] = val
 
     @property
     def columns(self) -> List[str]:
@@ -66,3 +87,21 @@ class DataFrame:
     def n_cols(self) -> int:
         """The number of columns in self."""
         return len(self._data)
+
+    def rename(self, cur: str, new: str) -> None:
+        """Rename the column <cur> as <new>.
+
+        Args:
+            cur (str): Current column name.
+            new (str): New column name.
+
+        Raises:
+            ValueError
+            E.ColumnNotFoundError
+        """
+        if new in self:
+            raise ValueError(f"The name '{new}' is in use.")
+        if cur in self:
+            self._data[new] = self._data.pop(cur)
+        else:
+            raise E.ColumnNotFoundError(cur)
