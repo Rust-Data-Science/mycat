@@ -1,6 +1,7 @@
 from typing import Dict, Tuple, List
 
 from ulist import UltraFastList
+from . import errors as E
 
 
 class DataFrame:
@@ -14,10 +15,33 @@ class DataFrame:
     def __init__(self, data: Dict[str, UltraFastList]) -> None:
         self._data = data
 
+    def __getitem__(self, col: str) -> UltraFastList:
+        """Returns the corresponding `ulist` object based on the
+        given column name.
+
+        Args:
+            col (str): Column name.
+
+        Raises:
+            E.ColumnNotFoundError
+
+        Returns:
+            UltraFastList
+        """
+        result = self._data.get(col)
+        if result is None:
+            raise E.ColumnNotFoundError(col)
+        return result
+
     @property
     def columns(self) -> List[str]:
-        """The column labels of self."""
+        """The column names of self."""
         return list(self._data.keys())
+
+    @property
+    def dtypes(self) -> Dict[str, str]:
+        """The dtypes of self."""
+        return {col: self[col].dtype for col in self.columns}
 
     @property
     def empty(self) -> bool:
