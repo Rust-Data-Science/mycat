@@ -1,4 +1,3 @@
-from logging import exception
 from typing import Dict, Tuple, List
 
 from ulist import UltraFastList
